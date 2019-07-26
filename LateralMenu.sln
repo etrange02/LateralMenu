@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LateralMenuTest", "LateralMenuTest\LateralMenuTest.csproj", "{16F17D92-3C90-43C2-8E19-118A43219789}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LateralMenu", "LateralMenu\LateralMenu.csproj", "{4021923D-2838-4465-8873-74D34054AAA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16F17D92-3C90-43C2-8E19-118A43219789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F17D92-3C90-43C2-8E19-118A43219789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F17D92-3C90-43C2-8E19-118A43219789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F17D92-3C90-43C2-8E19-118A43219789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4021923D-2838-4465-8873-74D34054AAA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4021923D-2838-4465-8873-74D34054AAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4021923D-2838-4465-8873-74D34054AAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4021923D-2838-4465-8873-74D34054AAA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {640FE9CF-FD86-4D12-8127-C8D22F800C41}
+	EndGlobalSection
+EndGlobal

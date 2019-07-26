@@ -1,0 +1,100 @@
+﻿<Window x:Class="LateralMenuTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:control="clr-namespace:LateralMenu.Control;assembly=LateralMenu"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="450" 
+        Width="800"
+        DataContext="{Binding Path=MainViewModel, Source={StaticResource ViewModelLocator}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Background="#252525">
+            <Image Source="pack://application:,,,/Images/menu_hamburger.png"
+                   Width="25"
+                   Height="25"
+                   Margin="5,0"
+                   HorizontalAlignment="Left"
+                   MouseDown="Button_Click">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" 
+                                     Value="true">
+                                <Setter Property="Cursor" 
+                                        Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Border>
+        <control:SideMenu HorizontalAlignment="Left" 
+                          x:Name="Menu"
+                          MenuWidth="350"
+                          ClosingType="Auto"
+                          Grid.Row="1"
+                          Grid.ColumnSpan="2" 
+                          Grid.Column="0"
+                          FontFamily="Calibri"
+                          FontSize="18"
+                          MenuBackground="Purple"
+                          HoverBackground="MediumPurple"
+                          ArrowBackground="White"
+                          Foreground="White">
+            <control:SideMenu.Children>
+                <control:MenuButton Text="Button 1" 
+                                    Command="{Binding AddElementCommand}" />
+                <control:MenuButton Text="{Binding ButtonText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    Command="{Binding AddElementCommand}" />
+                <control:ExpanderButton Header="{Binding Path=Header}">
+                    <control:ExpanderButton.Children>
+                        <control:MenuButton Text="Item 1" />
+                        <control:MenuButton Text="Item 2" />
+                    </control:ExpanderButton.Children>
+                </control:ExpanderButton>
+                <control:ExpanderButton Header="{Binding Header2}"
+                                        Children="{Binding Elements, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <control:ExpanderButton.ChildrenTemplate>
+                        <DataTemplate>
+                            <control:MenuButton Text="{Binding Path=., Mode=OneWay}" />
+                        </DataTemplate>
+                    </control:ExpanderButton.ChildrenTemplate>
+                </control:ExpanderButton>
+                <control:ExpanderButton Header="{Binding Header3}"
+                                        Children="{Binding Items}">
+                    <control:ExpanderButton.ChildrenTemplate>
+                        <DataTemplate DataType="{x:Type System:Int32}">
+                            <control:MenuButton Text="{Binding Path=., Mode=OneWay}" />
+                        </DataTemplate>
+                    </control:ExpanderButton.ChildrenTemplate>
+                </control:ExpanderButton>
+                <control:ExpanderButton Header="Level 1">
+                    <control:ExpanderButton.Children>
+                        <control:ExpanderButton>
+                            <control:ExpanderButton.Header>
+                                <TextBox Text="Test"/>
+                            </control:ExpanderButton.Header>
+                            <control:ExpanderButton.Children>
+                                <control:MenuButton Text="Button level 2" />
+                            </control:ExpanderButton.Children>
+                        </control:ExpanderButton>
+                        <control:MenuButton Text="Button level 1" />
+                    </control:ExpanderButton.Children>
+                </control:ExpanderButton>
+            </control:SideMenu.Children>
+        </control:SideMenu>
+    </Grid>
+</Window>
