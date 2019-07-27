@@ -63,7 +63,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ElementPropagator.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="package.nuspec" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Control\ExpanderButton.xaml">
       <Generator>MSBuild:Compile</Generator>

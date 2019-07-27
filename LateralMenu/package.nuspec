@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <!--*-->
+    <id>LateralMenu</id>
+    <!--*-->
+    <version>1.0.0</version>
+    <title>LateralMenu</title>
+    <!--*-->
+    <authors>David Lecoconnier</authors>
+    <owners>David Lecoconnier</owners>
+    <!--
+    <licenseUrl></licenseUrl>
+    <projectUrl></projectUrl>
+    <iconUrl></iconUrl>
+-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <!--*-->
+    <description>Creates a LateralMenu in few steps in WPF</description>
+    <!--*-->
+    <releaseNotes>First version</releaseNotes>
+    <copyright>Copyright © David Lecoconnier 2019</copyright>
+    <tags>Hamburger LateralMenu</tags>
+    <dependencies>
+      <!--
+      <dependency id="SampleDependency" version="1.0" />
+-->
+    </dependencies>
+  </metadata>
+</package>

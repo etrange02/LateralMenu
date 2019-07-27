@@ -3,9 +3,10 @@
 ################################################################################
 
 /.vs
-/LateralMenu/bin/Debug
-/LateralMenu/obj/Debug
-/LateralMenuTest/bin/Debug
-/LateralMenuTest/obj/Debug
 /packages
 *.user
+
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
