@@ -10,6 +10,9 @@
         Height="450" 
         Width="800"
         DataContext="{Binding Path=MainViewModel, Source={StaticResource ViewModelLocator}}">
+    <Window.Resources>
+        <control:BindingProxy  x:Key="DataContextProxy"  Data="{Binding}" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -63,6 +66,8 @@
                     <control:ExpanderButton.Children>
                         <control:MenuButton Text="Item 1" />
                         <control:MenuButton Text="Item 2" />
+                        <control:MenuButton Text="Sub Add"
+                                            Command="{Binding Data.SubLevelCommand, PresentationTraceSources.TraceLevel=High, Source={StaticResource DataContextProxy}}" />
                     </control:ExpanderButton.Children>
                 </control:ExpanderButton>
                 <control:ExpanderButton Header="{Binding Header2}"

@@ -11,7 +11,6 @@ namespace LateralMenu.Control
     /// Interaction logic for MenuButton.xaml
     /// </summary>
     public partial class MenuButton : IMaterialItem
-
     {
         public MenuButton()
         {

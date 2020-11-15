@@ -78,13 +78,13 @@ namespace LateralMenu.Control
 
         #region MenuWidth Dependency property
 
-        public double MenuWidth
+        public GridLength MenuWidth
         {
-            get => (double) GetValue(MenuWidthProperty);
+            get => (GridLength) GetValue(MenuWidthProperty);
             set => SetValue(MenuWidthProperty, value);
         }
 
-        public static readonly DependencyProperty MenuWidthProperty = DependencyProperty.Register("MenuWidth", typeof(double), typeof(SideMenu));
+        public static readonly DependencyProperty MenuWidthProperty = DependencyProperty.Register("MenuWidth", typeof(GridLength), typeof(SideMenu));
 
         #endregion
 
@@ -121,7 +121,7 @@ namespace LateralMenu.Control
         {
             var animation = new DoubleAnimation
             {
-                From = -MenuWidth*.85,
+                From = -MenuWidth.Value*.85,
                 To = 0,
                 Duration = TimeSpan.FromMilliseconds(100)
             };
@@ -129,27 +129,31 @@ namespace LateralMenu.Control
             _isDisplayed = true;
 
             ElementPropagator.Propagate(this, Children);
+            WindowSizeEvent();
 
-            (FindName("ShadowColumn") as ColumnDefinition).Width = new GridLength(10000);
+            var window = Window.GetWindow(this);
+            window.SizeChanged += WindowSizeEvent;
         }
 
         public void Hide()
         {
             var animation = new DoubleAnimation
             {
-                To = -MenuWidth,
+                To = -MenuWidth.Value,
                 Duration = TimeSpan.FromMilliseconds(100)
             };
             RenderTransform.BeginAnimation(TranslateTransform.XProperty, animation);
             _isDisplayed = false;
-            (FindName("ShadowColumn") as ColumnDefinition).Width = new GridLength(0);
+            SetShadowWidth(0);
+            var window = Window.GetWindow(this);
+            window.SizeChanged -= WindowSizeEvent;
         }
 
         public override void OnApplyTemplate()
         {
             Panel.SetZIndex(this, int.MaxValue);
-            RenderTransform = new TranslateTransform(-MenuWidth, 0);
-            (FindName("MenuColumn") as ColumnDefinition).Width = new GridLength(MenuWidth);
+            RenderTransform = new TranslateTransform(-MenuWidth.Value, 0);
+            (FindName("MenuColumn") as ColumnDefinition).Width = MenuWidth;
 
             // This is a little hack to fire property changes.
             // WPF so complex, it could be much simple...
@@ -164,6 +168,22 @@ namespace LateralMenu.Control
         public void InternalElementClicked()
         {
             Hide();
+        }
+
+        private void WindowSizeEvent(object source, SizeChangedEventArgs args)
+        {
+            WindowSizeEvent();
+        }
+
+        private void WindowSizeEvent()
+        {
+            var window = Window.GetWindow(this);
+            SetShadowWidth(window.ActualWidth - MenuWidth.Value);
+        }
+
+        private void SetShadowWidth(double width)
+        {
+            (FindName("ShadowColumn") as ColumnDefinition).Width = new GridLength(width);
         }
     }
 }

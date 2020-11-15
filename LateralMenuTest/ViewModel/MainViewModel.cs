@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data;
-using System.Windows.Documents;
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace LateralMenuTest.ViewModel
 {
@@ -23,29 +21,38 @@ namespace LateralMenuTest.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private Random _random = new Random();
+        private readonly Random _random = new Random();
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
-            AddElementCommand = new RelayCommand(() => AddElementCommandExecute());
-            Elements = new ObservableCollection<string>();
-            Elements.Add("a");
-            Elements.Add("b");
-            Elements.Add("c");
+            AddElementCommand = new RelayCommand(AddElementCommandExecute);
+            SubLevelCommand = new RelayCommand(SubLevelCommandExecute);
+            Elements = new ObservableCollection<string>
+            {
+                "a",
+                "b",
+                "c"
+            };
             Header = "First header";
             Header2 = "Second header";
             Header3 = "Third header";
             ButtonText = "Button 2";
         }
 
-        private RelayCommand _addElementCommand;
-
-        public RelayCommand AddElementCommand
+        private ICommand _addElementCommand;
+        public ICommand AddElementCommand
         {
-            get { return _addElementCommand; }
-            set { Set(ref _addElementCommand, value); }
+            get => _addElementCommand;
+            set => Set(ref _addElementCommand, value);
+        }
+
+        private ICommand _subLevelCommand;
+        public ICommand SubLevelCommand
+        {
+            get => _subLevelCommand;
+            set => Set(ref _subLevelCommand, value);
         }
 
         private string _header;
@@ -111,6 +118,11 @@ namespace LateralMenuTest.ViewModel
         private void AddElementCommandExecute()
         {
             Elements.Add(_random.Next().ToString());
+        }
+
+        private void SubLevelCommandExecute()
+        {
+            AddElementCommandExecute();
         }
     }
 }

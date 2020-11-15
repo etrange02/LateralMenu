@@ -19,7 +19,7 @@
     <description>Creates a LateralMenu in few steps in WPF</description>
     <!--*-->
     <releaseNotes>First version</releaseNotes>
-    <copyright>Copyright © David Lecoconnier 2019</copyright>
+    <copyright>Copyright © David Lecoconnier 2020</copyright>
     <tags>Hamburger LateralMenu</tags>
     <dependencies>
       <!--

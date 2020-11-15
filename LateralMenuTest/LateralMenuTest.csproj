@@ -114,13 +114,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\menu_hamburger.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\LateralMenu\LateralMenu.csproj">
       <Project>{4021923d-2838-4465-8873-74d34054aaa4}</Project>
       <Name>LateralMenu</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\menu_hamburger.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
