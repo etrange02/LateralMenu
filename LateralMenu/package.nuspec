@@ -4,7 +4,7 @@
     <!--*-->
     <id>LateralMenu</id>
     <!--*-->
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
     <title>LateralMenu</title>
     <!--*-->
     <authors>David Lecoconnier</authors>
@@ -18,8 +18,7 @@
     <!--*-->
     <description>Creates a LateralMenu in few steps in WPF</description>
     <!--*-->
-    <releaseNotes>- Fix Binding for sub elements of ExpanderMenu
-- Fix MenuWidthType</releaseNotes>
+    <releaseNotes>- Fix ElementName property</releaseNotes>
     <copyright>Copyright © David Lecoconnier 2020</copyright>
     <tags>Hamburger LateralMenu SideMenu</tags>
     <dependencies>

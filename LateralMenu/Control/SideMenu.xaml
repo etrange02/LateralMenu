@@ -24,7 +24,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="MenuColumn" Width="{Binding MenuWidth, ElementName=Control, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <ColumnDefinition x:Name="MenuColumn" Width="{Binding MenuWidth, ElementName=LateralMenuControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <ColumnDefinition x:Name="ShadowColumn" Width="0" />
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Column="0"
